@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (codeBtn && codeNotice) {
     codeBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      codeNotice.classList.remove("hidden");
+      codeNotice.classList.toggle("hidden");
     });
   }
 
