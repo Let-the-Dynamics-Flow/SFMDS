@@ -30,6 +30,10 @@ a:hover { text-decoration: underline; }
   padding: 0 24px;
 }
 
+.container.wide {
+  max-width: 1300px;
+}
+
 section {
   padding: 64px 0;
 }
@@ -48,6 +52,14 @@ section + section {
   font-weight: 700;
   line-height: 1.35;
   margin: 0 0 24px;
+}
+
+.hero h1 .subtitle {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 .authors {
@@ -118,6 +130,66 @@ section + section {
   color: var(--text-muted);
   font-size: 0.92rem;
   margin-top: 14px;
+}
+
+.teaser-lead {
+  text-align: center;
+  font-size: 1.08rem;
+  font-style: italic;
+  color: var(--accent-dark);
+  margin: 0 0 32px;
+}
+
+.video-row {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.video-row.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.video-row.one-col {
+  grid-template-columns: 1fr;
+}
+
+.video-cell { text-align: center; }
+
+.video-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.teaser-video {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  background: var(--bg-alt);
+}
+
+@media (max-width: 700px) {
+  .video-row.two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hidden until paper acceptance — see CLAUDE.md for what to restore. */
+.hide-until-acceptance {
+  display: none !important;
+}
+
+.notice-red {
+  color: #c0392b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.notice-red.hidden {
+  display: none;
 }
 
 h2.section-title {

@@ -3,51 +3,93 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Stable Flow Matching for Dynamical Systems</title>
+<title>Let the Dynamics Flow: Stable Flow Matching Dynamical Systems</title>
 <meta name="description" content="Project page for our paper on stable flow matching for dynamical systems." />
 
 <!-- Open Graph / social preview -->
-<meta property="og:title" content="Stable Flow Matching for Dynamical Systems" />
+<meta property="og:title" content="Let the Dynamics Flow: Stable Flow Matching Dynamical Systems" />
 <meta property="og:description" content="Project page for our paper on stable flow matching for dynamical systems." />
 <meta property="og:image" content="assets/img/teaser.svg" />
 <meta property="og:type" content="website" />
 
 <link rel="stylesheet" href="assets/css/style.css" />
+
+<!-- MathJax: renders inline LaTeX ($...$) used in figure/method descriptions -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    macros: {
+      bm: ["{\\boldsymbol{#1}}", 1],
+      sX: "{\\mathcal{X}}"
+    }
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
 <header class="hero">
   <div class="container">
-    <h1>[Paper Title Goes Here]:<br />A Short Descriptive Subtitle</h1>
+    <h1>Let the Dynamics Flow:<br /><span class="subtitle">Stable Flow Matching Dynamical Systems</span></h1>
 
     <div class="authors">
-      <a href="#">Author One</a><sup>1</sup>,
-      <a href="#">Author Two</a><sup>1</sup>,
-      <a href="#">Author Three</a><sup>2</sup>,
-      <a href="#">Author Four</a><sup>1</sup>
+      Authors omitted for anonymous review
     </div>
-    <div class="affiliations">
-      <sup>1</sup>Institution A &nbsp;&nbsp; <sup>2</sup>Institution B
-    </div>
-    <div class="venue">Conference / Journal Name 2026 (or "Preprint, 2026")</div>
+    <div class="venue hide-until-acceptance">Conference / Journal Name 2026 (or "Preprint, 2026")</div>
 
     <div class="links">
-      <a class="btn" href="#">📄 Paper (arXiv)</a>
-      <a class="btn" href="#">💻 Code</a>
-      <a class="btn" href="#">🎥 Video</a>
-      <a class="btn" href="#bibtex">❝ Cite</a>
+      <a class="btn hide-until-acceptance" href="#">📄 Paper (arXiv)</a>
+      <a class="btn" href="#" id="code-btn">💻 Code</a>
+      <a class="btn" href="#video-results">🎥 Video</a>
+      <a class="btn hide-until-acceptance" href="#bibtex">❝ Cite</a>
     </div>
+    <div id="code-notice" class="notice-red hidden">Code will be shared publicly upon acceptance.</div>
   </div>
 </header>
 
 <section class="teaser">
   <div class="container reveal">
-    <figure>
-      <img src="assets/img/teaser.svg" alt="Teaser figure" />
-      <figcaption>
-        One-sentence summary of what this teaser shows and why it matters.
-      </figcaption>
-    </figure>
+    <p class="teaser-lead">Every learned dynamical system shown below converges to an asymptotically stable equilibrium.</p>
+    <div class="video-row two-col">
+      <div class="video-cell">
+        <h3 class="video-title">Multimodal dynamics</h3>
+        <video class="teaser-video" autoplay muted loop playsinline controls>
+          <source src="assets/vid/multimodal_2D.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="video-cell">
+        <h3 class="video-title">Dynamics on Lie groups</h3>
+        <video class="teaser-video" autoplay muted loop playsinline controls>
+          <source src="assets/vid/simulation_torus.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <div class="video-row two-col">
+      <div class="video-cell">
+        <h3 class="video-title">Multimodal dynamics on SE(3)</h3>
+        <video class="teaser-video" autoplay muted loop playsinline controls>
+          <source src="assets/vid/multimodal_SE3.webm" type="video/webm" />
+        </video>
+      </div>
+      <div class="video-cell">
+        <h3 class="video-title">Dynamical system-based pose control on SE(3)</h3>
+        <video class="teaser-video" autoplay muted loop playsinline controls>
+          <source src="assets/vid/robot.webm" type="video/webm" />
+        </video>
+      </div>
+    </div>
+
+  </div>
+  <div class="container wide reveal">
+    <div class="video-row one-col">
+      <div class="video-cell">
+        <h3 class="video-title">High-dimensional dynamics</h3>
+        <img class="teaser-video" src="assets/vid/reaction_diffusion_img.gif?v=2" alt="High-dimensional dynamics" />
+      </div>
+    </div>
   </div>
 </section>
 
@@ -55,79 +97,52 @@
   <div class="container reveal">
     <h2 class="section-title">Abstract</h2>
     <p>
-      Placeholder abstract. Replace this paragraph with your paper's abstract —
-      keep it as close to verbatim as possible so readers can quickly decide
-      whether to read further. Two to three sentences of motivation, one
-      sentence on the method, one to two sentences on results.
+      Flow matching has recently emerged as a powerful approach for imitation learning,
+      enabling scalable, expressive, and multimodal motion policies. However, when
+      modeling these policies as dynamical systems, incorporating formal stability
+      guarantees into these generative models is a prerequisite to ensure safe and
+      generalizable robot behaviors, which remains a significant challenge.
+      This paper introduces Stable Flow Matching Dynamical Systems (SFMDS), a novel
+      framework that bridges the gap between highly-expressive generative modeling and
+      formal stability guarantees. SFMDS parametrizes dynamical systems via flow matching
+      while constraining the model to satisfy positive invariance and/or Lyapunov
+      stability conditions. We propose two variants: a soft constraint based on a penalty
+      term, and a hard structural constraint embedded directly into the model architecture.
+      We further extend both formulations to Lie groups to robustly handle orientation
+      trajectories. Experiments on benchmark datasets, in simulation, and on a humanoid
+      robot show that SFMDS learns stable, scalable, and multimodal dynamical systems,
+      enabling safe and expressive robot motion generation. SFMDS matches or outperforms
+      state-of-the-art methods on unimodal datasets and substantially improves performance
+      on multimodal datasets, where competing approaches fail to capture multimodality.
+      Moreover, to the best of our knowledge, it is the first approach to scale latent
+      Lyapunov-based stability concepts to high-dimensional systems such as
+      reaction-diffusion dynamics.
     </p>
   </div>
 </section>
 
 <section class="method">
   <div class="container reveal">
-    <h2 class="section-title">Method</h2>
+    <h2 class="section-title">Overview</h2>
     <figure class="method-figure">
-      <img src="assets/img/method.svg" alt="Method diagram" />
+      <img src="assets/img/cover_sfmds_v4.png" alt="Method diagram" />
     </figure>
     <p>
-      Placeholder method description. Briefly explain the key idea, in plain
-      language, in two to four sentences. Avoid heavy notation here — save
-      that for the paper. This section should give a reader who skims the
-      page a working mental model of how the approach works.
+      Robot behavior modeled as a stable flow matching dynamical system (SFMDS) on a Lie group. Velocities $\dot{\bm{x}}_t=\bm{h}_1$ learned via flow matching. Asymptotic stability is enforced by constraining the solution space of flow matching to a set of admissible velocities $\dot{\sX}_{\text{A}}$ derived from a latent Lyapunov function. SFMDS generates multimodal behaviors, represented by blue and red arrows.
     </p>
   </div>
 </section>
 
-<section class="results">
+<section class="videos" id="video-results">
   <div class="container reveal">
-    <h2 class="section-title">Results</h2>
-    <div class="results-grid">
-
-      <div class="result-card">
-        <img src="assets/img/result-1.svg" alt="Result 1" />
-        <figcaption>Caption describing result 1.</figcaption>
-      </div>
-
-      <div class="result-card">
-        <img src="assets/img/result-2.svg" alt="Result 2" />
-        <figcaption>Caption describing result 2.</figcaption>
-      </div>
-
-      <div class="result-card">
-        <img src="assets/img/result-3.svg" alt="Result 3" />
-        <figcaption>Caption describing result 3.</figcaption>
-      </div>
-
-    </div>
+    <h2 class="section-title">Video Results</h2>
+    <video class="teaser-video" controls>
+      <source src="assets/vid/video_results.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
-<section class="videos">
-  <div class="container reveal">
-    <h2 class="section-title">Video Results / Animations</h2>
-    <div class="results-grid">
-
-      <div class="result-card">
-        <div class="media-box">
-          <span class="play-icon">▶</span>
-          <span>Replace with &lt;video src="assets/video/demo-1.mp4" controls&gt;</span>
-        </div>
-        <figcaption>Caption describing this animation or rollout.</figcaption>
-      </div>
-
-      <div class="result-card">
-        <div class="media-box">
-          <span class="play-icon">▶</span>
-          <span>Replace with &lt;video src="assets/video/demo-2.mp4" controls&gt;</span>
-        </div>
-        <figcaption>Caption describing this animation or rollout.</figcaption>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="bibtex-section" id="bibtex">
+<section class="bibtex-section hide-until-acceptance" id="bibtex">
   <div class="container reveal">
     <h2 class="section-title">BibTeX</h2>
     <div class="bibtex">
@@ -144,7 +159,7 @@
 
 <footer>
   <div class="container">
-    Project page template — replace all placeholder text, images and videos above with your own.
+    Let the Dynamics Flow: Stable Flow Matching Dynamical Systems
   </div>
 </footer>
 

@@ -13,6 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+  const codeBtn = document.getElementById("code-btn");
+  const codeNotice = document.getElementById("code-notice");
+  if (codeBtn && codeNotice) {
+    codeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      codeNotice.classList.remove("hidden");
+    });
+  }
+
   const copyBtn = document.querySelector(".copy-btn");
   if (copyBtn) {
     copyBtn.addEventListener("click", () => {
