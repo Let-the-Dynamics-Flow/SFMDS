@@ -22,6 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const abstractToggle = document.getElementById("abstract-toggle");
+  const abstractCollapsible = document.getElementById("abstract-collapsible");
+  if (abstractToggle && abstractCollapsible) {
+    abstractToggle.addEventListener("click", () => {
+      const collapsed = abstractCollapsible.classList.toggle("collapsed");
+      abstractToggle.textContent = collapsed ? "Show more ▾" : "Show less ▴";
+    });
+  }
+
   const copyBtn = document.querySelector(".copy-btn");
   if (copyBtn) {
     copyBtn.addEventListener("click", () => {
